@@ -216,7 +216,7 @@ func (app *ForumApp) PrepareProposal(_ context.Context, req *abci.PrepareProposa
 		if err != nil {
 			fmt.Println("failed to parse message in PrepareProposal")
 		} else {
-			// If the user is banned then include this transaction in the final proposal
+			// If the user is not banned then include this transaction in the final proposal
 			if _, ok := bannedUsersString[msg.Sender]; !ok {
 				finalProposal = append(finalProposal, tx)
 			}
